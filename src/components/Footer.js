@@ -2,7 +2,7 @@ import React from "react"
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer page__footer">
       <p className="footer__copyright">
         © {new Date().getFullYear()}. Фролов Вадим
       </p>
