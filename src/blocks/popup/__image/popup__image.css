@@ -5,6 +5,7 @@
   object-fit: cover;*/
   max-width: 75vw;
   max-height: 75vh;
+  border-radius: 20px;
 }
 
 /*@media screen and (max-width: 500px) {

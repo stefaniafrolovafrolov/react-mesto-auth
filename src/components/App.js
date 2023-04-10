@@ -148,7 +148,7 @@ function App() {
       .addNewCard(data)
       .then((newCard) => {
         setCards([newCard, ...cards])
-
+console.log(cards)
         closeAllPopups()
       })
       .catch((error) => console.log(`Ошибка: ${error}`))
@@ -264,7 +264,6 @@ function App() {
               onAddPlace={setIsAddPlacePopupOpen}
               onCardClick={setSelectedCard}
               onCardLike={handleCardLike}
-              /*onCardDelete={setDeletedCard}*/
               onDeletedCard={setDeletedCard}
               cards={cards}
               component={Main}
