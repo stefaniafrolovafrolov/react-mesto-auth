@@ -3,13 +3,20 @@
   margin: 45px 200px 0 200px;
   width: calc(100% - 400px);
   border-bottom: 1px rgba(84, 84, 84, 0.7) solid;
+  padding-bottom: 31px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .header {
-    width: 100%;
-    margin: 0;
+    width: 80%;
+    margin: 0 auto;
     padding: 28px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 778px) {
+  .header {
+    width: 90%;
   }
 }
 
