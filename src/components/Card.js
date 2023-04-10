@@ -19,6 +19,7 @@ function Card(props){
   }
 
   function handleDeleteClick() {
+    console.log("click");
     props.onCardDelete(props.card)
     props.onConfirmationPopup(true)
   }

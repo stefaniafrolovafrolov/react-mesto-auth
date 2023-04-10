@@ -7,6 +7,7 @@ function Login(props) {
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }
+  
   function handlePasswordChange(e) {
     setpassword(e.target.value);
   }

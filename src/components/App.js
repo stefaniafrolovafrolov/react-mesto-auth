@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from "react"
+import React, { useState, useEffect } from "react"
 import Header from "../components/Header"
 import Main from "../components/Main"
 import Footer from "../components/Footer"
@@ -243,97 +243,88 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <>
-        <div className="root">
-          <div className="page">
-            <Header
-              email={email}
-              onSignOut={handleSignOut}
-              isMobileMenuOpen={isMobileMenuOpen}
-              handleClickOpenMobileMenu={handleClickOpenMobileMenu}
+      <div className="root">
+        <div className="page">
+          <Header
+            email={email}
+            onSignOut={handleSignOut}
+            isMobileMenuOpen={isMobileMenuOpen}
+            handleClickOpenMobileMenu={handleClickOpenMobileMenu}
+            isLoggedIn={isLoggedIn}
+          />
+
+          <Switch>
+            <ProtectedRoute
+              exact
+              path="/"
               isLoggedIn={isLoggedIn}
+              onEditAvatar={setIsEditAvatarPopupOpen}
+              onEditProfile={setIsEditProfilePopupOpen}
+              onConfirmationPopup={setIsConfirmationPopupOpen}
+              onAddPlace={setIsAddPlacePopupOpen}
+              onCardClick={setSelectedCard}
+              onCardLike={handleCardLike}
+              /*onCardDelete={setDeletedCard}*/
+              onDeletedCard={setDeletedCard}
+              cards={cards}
+              component={Main}
+              isLoading={isLoading}
             />
-            {/* <Main
-            onEditProfile={setIsEditProfilePopupOpen}
-            onEditAvatar={setIsEditAvatarPopupOpen}
-            onAddPlace={setIsAddPlacePopupOpen}
-            onConfirmationPopup={setIsConfirmationPopupOpen}
-            onDeletedCard={setDeletedCard}
-            onCardClick={setSelectedCard}
-            onCardLike={handleCardLike}
-            cards={cards}
-          />*/}
-            <Switch>
-              <ProtectedRoute
-                exact
-                path="/"
-                isLoggedIn={isLoggedIn}
-                onEditAvatar={setIsEditAvatarPopupOpen}
-                onEditProfile={setIsEditProfilePopupOpen}
-                onAddPlace={setIsAddPlacePopupOpen}
-                onCardClick={setSelectedCard}
-                onCardLike={handleCardLike}
-                onCardDelete={setDeletedCard}
-                cards={cards}
-                component={Main}
-                isLoading={isLoading}
-              />
-              <Route path="/sign-in">
-                <Login onLogin={handleLoginSubmit} />
-              </Route>
-              <Route path="/sign-up">
-                <Register onRegister={handleRegisterSubmit} />
-              </Route>
-              <Route>
-                {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-              </Route>
-            </Switch>
+            <Route path="/sign-in">
+              <Login onLogin={handleLoginSubmit} />
+            </Route>
+            <Route path="/sign-up">
+              <Register onRegister={handleRegisterSubmit} />
+            </Route>
+            <Route>
+              {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+            </Route>
+          </Switch>
 
-            {isLoggedIn && <Footer />}
-            <AddPlacePopup
-              onAddPlace={handleAddPlaceSubmit}
-              isOpen={isAddPlacePopupOpen}
-              onClose={closeAllPopups}
-              onLoading={isLoading}
-              onCloseOverlay={closeByOverlay}
-            />
-            <EditProfilePopup
-              isOpen={isEditProfilePopupOpen}
-              onUpdateUser={handleUpdateUser}
-              onClose={closeAllPopups}
-              onLoading={isLoading}
-              onCloseOverlay={closeByOverlay}
-            />
-            <EditAvatarPopup
-              onUpdateAvatar={handleUpdateAvatar}
-              isOpen={isEditAvatarPopupOpen}
-              onClose={closeAllPopups}
-              onLoading={isLoading}
-              onCloseOverlay={closeByOverlay}
-            />
-            <PopupConfirmation
-              onClose={closeAllPopups}
-              isOpen={isConfirmationPopupOpen}
-              onCardDelete={handleCardDelete}
-              onLoading={isLoading}
-              card={deletedCard}
-              onCloseOverlay={closeByOverlay}
-            />
+          {isLoggedIn && <Footer />}
+          <AddPlacePopup
+            onAddPlace={handleAddPlaceSubmit}
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+            onLoading={isLoading}
+            onCloseOverlay={closeByOverlay}
+          />
+          <EditProfilePopup
+            isOpen={isEditProfilePopupOpen}
+            onUpdateUser={handleUpdateUser}
+            onClose={closeAllPopups}
+            onLoading={isLoading}
+            onCloseOverlay={closeByOverlay}
+          />
+          <EditAvatarPopup
+            onUpdateAvatar={handleUpdateAvatar}
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onLoading={isLoading}
+            onCloseOverlay={closeByOverlay}
+          />
+          <PopupConfirmation
+            onClose={closeAllPopups}
+            isOpen={isConfirmationPopupOpen}
+            onCardDelete={handleCardDelete}
+            onLoading={isLoading}
+            card={deletedCard}
+            onCloseOverlay={closeByOverlay}
+          />
 
-            <ImagePopup
-              card={selectedCard}
-              onClose={closeAllPopups}
-              onCloseOverlay={closeByOverlay}
-            />
+          <ImagePopup
+            card={selectedCard}
+            onClose={closeAllPopups}
+            onCloseOverlay={closeByOverlay}
+          />
 
-            <InfoToolTip
-              isOpen={isInfoToolTipPopupOpen}
-              onClose={closeAllPopups}
-              isSuccess={isSuccess}
-            />
-          </div>
+          <InfoToolTip
+            isOpen={isInfoToolTipPopupOpen}
+            onClose={closeAllPopups}
+            isSuccess={isSuccess}
+          />
         </div>
-      </>
+      </div>
     </CurrentUserContext.Provider>
   )
 }

@@ -12,7 +12,7 @@ function Header(props) {
         handleLogout={props.onSignOut}
         isMobileMenuOpen={props.isMobileMenuOpen}
       />
-      <header className="header page__header">
+      <header className="header page__header mobile-menu__header">
         <a className="logo" href="#" target="_self" />
         <Switch>
           <Route exact path="/sign-in">

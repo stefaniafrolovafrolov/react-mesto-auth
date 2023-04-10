@@ -5,7 +5,6 @@
 @import url("./blocks/root/root.css");
 
 @import url("./blocks/page/page.css");
-@import url("./blocks/page/__profile/page__profile.css");
 @import url("./blocks/page/__profile/_hidden/page__profile_hidden.css");
 @import url("./blocks/page/__header/page__header.css");
 
@@ -91,18 +90,6 @@
 @import url("./blocks/mobile-menu/__email/mobile-menu__email.css");
 @import url("./blocks/mobile-menu/__exit/mobile-menu__exit.css");
 @import url("./blocks/mobile-menu/_opened/mobile-menu_opened.css");
+@import url("./blocks/mobile-menu/__header/mobile-menu__header.css");
 
-@import url("./blocks/page/__footer/page__footer.css");
-/*@import url("./blocks.css");
-@import url("./blocks.css");
-@import url("./blocks.css");
-@import url("./blocks.css");
-@import url("./blocks.css");
-
-@import url("./blocks.css");
-@import url("./blocks.css");
-@import url("./blocks.css");
-@import url("./blocks.css");
-@import url("./blocks.css");*/
-
-@import url("./blocks/rotation/rotation.css");
+/*@import url("./blocks/rotation/rotation.css");Это анимация вращения карточек*/

@@ -4,22 +4,16 @@ import Card from "./Card"
 import profileEditAvatar from "../images/profile__edit-avatar.svg"
 import Loader from "./Loader"
 
-function Main(props){
-  
-
+function Main(props) {
   const currentUser = React.useContext(CurrentUserContext)
 
   return (
     <main className="content">
+      {props.isLoading && <Loader />}
 
-{props.isLoading && <Loader />}
-
-<section
-        className={`profile page__profile ${
-          props.isLoading && 'page__profile_hidden'
-        }`}
-        >
-
+      <section
+        className={`profile ${props.isLoading && "page__profile_hidden"}`}
+      >
         <div className="profile__container">
           <div className="profile__wrapper-relative">
             <img

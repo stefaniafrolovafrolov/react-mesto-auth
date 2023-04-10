@@ -20,9 +20,10 @@
 
 - npm start - соберет проект
 
-- для входа можно использовать готовый логин: и пароль:
+- для входа можно использовать готовый логин: VadimFrolov@admin.ru и пароль: react
 
 ## Ссылка на GitHub Pages:
 
 - Сайт на gh-pages:
-- Макет Figma:
+
+- Макет Figma: https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=4453-384&t=DnBupFJMytYZWMYK-0
