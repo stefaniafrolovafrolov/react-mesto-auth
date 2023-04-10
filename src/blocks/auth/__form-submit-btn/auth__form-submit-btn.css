@@ -11,7 +11,14 @@
   padding: 0;
   box-sizing: border-box;
   border: none;
+  cursor: pointer;
 }
+
+.auth__form-submit-btn:hover {
+  opacity: .85;
+  transition: .7s all;
+}
+
 
 @media screen and (max-width: 510px) {
   .auth__form-submit-btn {
