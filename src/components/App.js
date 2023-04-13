@@ -11,7 +11,6 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext"
 import api from "../utils/Api"
 import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import ProtectedRoute from "./ProtectedRoute"
-
 import Register from "./Register"
 import Login from "./Login"
 import * as auth from "../utils/auth"
@@ -148,7 +147,7 @@ function App() {
       .addNewCard(data)
       .then((newCard) => {
         setCards([newCard, ...cards])
-console.log(cards)
+        console.log(cards)
         closeAllPopups()
       })
       .catch((error) => console.log(`Ошибка: ${error}`))
@@ -240,6 +239,7 @@ console.log(cards)
       setIsMobileMenuOpen(!isMobileMenuOpen)
     }
   }
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
