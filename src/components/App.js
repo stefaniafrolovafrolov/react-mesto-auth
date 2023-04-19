@@ -9,7 +9,12 @@ import PopupConfirmation from "../components/PopupConfirmation"
 import ImagePopup from "../components/ImagePopup"
 import { CurrentUserContext } from "../contexts/CurrentUserContext"
 import api from "../utils/Api"
-import { Route, Switch, Redirect, useHistory } from "react-router-dom"
+import {
+  Route,
+  Switch,
+  Redirect,
+  useHistory,
+} from "react-router-dom"
 import ProtectedRoute from "./ProtectedRoute"
 import Register from "./Register"
 import Login from "./Login"
@@ -240,7 +245,6 @@ function App() {
     }
   }
 
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
@@ -256,7 +260,7 @@ function App() {
           <Switch>
             <ProtectedRoute
               exact
-              path="/"
+              path="/react-mesto-auth"
               isLoggedIn={isLoggedIn}
               onEditAvatar={setIsEditAvatarPopupOpen}
               onEditProfile={setIsEditProfilePopupOpen}
@@ -276,7 +280,7 @@ function App() {
               <Register onRegister={handleRegisterSubmit} />
             </Route>
             <Route>
-              {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+              {isLoggedIn ? <Redirect to="/react-mesto-auth" /> : <Redirect to="/sign-in" />}
             </Route>
           </Switch>
 
