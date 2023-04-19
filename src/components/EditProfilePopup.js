@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { CurrentUserContext } from "../contexts/CurrentUserContext"
 import PopupWithForm from "./PopupWithForm"
+import { useFormAndValidation } from "../hooks/useFormAndValidation.js"
 
-function EditProfilePopup({ isOpen, onUpdateUser, onLoading, onClose, onCloseOverlay }) {
-  const currentUser = React.useContext(CurrentUserContext)
-  const [about, setAbout] = useState("")
-  const [name, setName] = useState("")
-
-  useEffect(() => {
-    setName(currentUser.name)
-    setAbout(currentUser.about)
-  }, [currentUser, isOpen])
+function EditProfilePopup({
+  isOpen,
+  onUpdateUser,
+  onLoading,
+  onClose,
+  onCloseOverlay,
+}) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation()
+  const currentUser = useContext(CurrentUserContext)
 
   function handleSubmit(e) {
+    // Запрещаем браузеру переходить по адресу формы
     e.preventDefault()
-    onUpdateUser({
-      name: name,
-      about: about,
-    })
+    if (isValid) {
+      // Передаём значения управляемых компонентов во внешний обработчик
+      onUpdateUser({
+        name: values.name,
+        about: values.about,
+      })
+    }
   }
 
-  function handleChangeName(e) {
-    setName(e.target.value)
-  }
-
-  function handleChangeAbout(e) {
-    setAbout(e.target.value)
-  }
+  useEffect(() => {
+    if (currentUser) {
+      resetForm(currentUser)
+    }
+  }, [currentUser, resetForm, isOpen])
 
   return (
     <PopupWithForm
@@ -44,14 +48,14 @@ function EditProfilePopup({ isOpen, onUpdateUser, onLoading, onClose, onCloseOve
           id="nameInput"
           name="name"
           type="text"
-          value={name || ""}
-          onChange={handleChangeName}
+          value={values.name}
+          onChange={handleChange}
           placeholder="Имя"
           minLength="2"
           maxLength="40"
           required
         />
-        <span className="nameInput-error error" />
+        <span className="nameInput-error error">{errors.name}</span>
       </label>
       <label className="popup__label">
         <input
@@ -59,14 +63,14 @@ function EditProfilePopup({ isOpen, onUpdateUser, onLoading, onClose, onCloseOve
           id="jobInput"
           name="about"
           type="text"
-          value={about || ""}
-          onChange={handleChangeAbout}
+          value={values.about}
+          onChange={handleChange}
           placeholder="О себе"
           minLength="2"
           maxLength="200"
           required
         />
-        <span className="jobInput-error error" />
+        <span className="jobInput-error error">{errors.about}</span>
       </label>
     </PopupWithForm>
   )
