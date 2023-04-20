@@ -260,7 +260,7 @@ function App() {
           <Switch>
             <ProtectedRoute
               exact
-              path="/react-mesto-auth"
+              path="/"
               isLoggedIn={isLoggedIn}
               onEditAvatar={setIsEditAvatarPopupOpen}
               onEditProfile={setIsEditProfilePopupOpen}
@@ -273,14 +273,14 @@ function App() {
               component={Main}
               isLoading={isLoading}
             />
-            <Route path="/react-mesto-auth/sign-in">
+            <Route path="/sign-in">
               <Login onLogin={handleLoginSubmit} />
             </Route>
-            <Route path="/react-mesto-auth/sign-up">
+            <Route path="/sign-up">
               <Register onRegister={handleRegisterSubmit} />
             </Route>
             <Route>
-              {isLoggedIn ? <Redirect to="/react-mesto-auth" /> : <Redirect to="/react-mesto-auth/sign-in" />}
+              {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
             </Route>
           </Switch>
 

@@ -16,21 +16,21 @@ function Header(props) {
       <header className="header page__header mobile-menu__header">
         <a className="logo" href="#" target="_self" />
 
-        {location.pathname === "/react-mesto-auth/sign-in" && (
+        {location.pathname === "/sign-in" && (
           <Link to="/react-mesto-auth/sign-up" className="header__link">
             Регистрация
           </Link>
         )}
-        {location.pathname === "/react-mesto-auth/sign-up" && (
+        {location.pathname === "/sign-up" && (
           <Link to="/react-mesto-auth/sign-in" className="header__link">
             Войти
           </Link>
         )}
-        {location.pathname === "/react-mesto-auth" && (
+        {location.pathname === "/" && (
           <div className="header__user-info">
             <p className="header__email">{props.email}</p>
             <Link
-              to="/react-mesto-auth/sign-in"
+              to="/sign-in"
               className="header__link"
               onClick={props.onSignOut}
             >

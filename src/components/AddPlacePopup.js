@@ -17,6 +17,13 @@ function AddPlacePopup({
     resetForm()
   }, [isOpen, resetForm])
 
+  /* useEffect(() => {
+       setFormValues({
+         name: "",
+        link: "",
+      });
+    }, [isOpen]);*/
+
   // проверка на валидность формы перед отправкой данных
   function handleSubmit(e) {
     e.preventDefault()
