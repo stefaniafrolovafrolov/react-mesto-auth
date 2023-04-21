@@ -17,12 +17,12 @@ function Header(props) {
         <a className="logo" href="#" target="_self" />
 
         {location.pathname === "/sign-in" && (
-          <Link to="/react-mesto-auth/sign-up" className="header__link">
+          <Link to="/sign-up" className="header__link">
             Регистрация
           </Link>
         )}
         {location.pathname === "/sign-up" && (
-          <Link to="/react-mesto-auth/sign-in" className="header__link">
+          <Link to="/sign-in" className="header__link">
             Войти
           </Link>
         )}
