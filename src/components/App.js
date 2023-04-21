@@ -95,7 +95,7 @@ function App() {
 
   function closeByOverlay(evt) {
     if (evt.target === evt.currentTarget) {
-      console.log("gggggggggggg")
+      console.log()
       closeAllPopups()
     }
   }

@@ -1,18 +1,9 @@
-import React, { useRef, useEffect } from "react"
+import React, { useEffect } from "react"
 import PopupWithForm from "./PopupWithForm"
-import { useFormAndValidation } from "../hooks/useFormAndValidation.js"
 
-function EditAvatarPopup({
-  onLoading,
-  onClose,
-  onUpdateAvatar,
-  isOpen,
-  onCloseOverlay,
-}) {
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormAndValidation()
-
-  const avatarRef = useRef(null)
+function EditAvatarPopup({ onLoading, onClose, onUpdateAvatar, isOpen,
+  onCloseOverlay }) {
+  const avatarRef = React.useRef(null)
 
   useEffect(() => {
     avatarRef.current.value = ""
@@ -20,12 +11,13 @@ function EditAvatarPopup({
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (isValid) {
-      resetForm() // вызов resetForm перед отправкой данных
-      onUpdateAvatar({
-        avatar: avatarRef.current.value, // получение значения инпута через реф
-      })
-    }
+    onUpdateAvatar({
+      avatar: avatarRef.current.value,
+    })
+  }
+
+  function handleChangeAvatar() {
+    return avatarRef.current.value
   }
 
   return (
@@ -44,13 +36,12 @@ function EditAvatarPopup({
           id="nameInputAvatar"
           name="avatar"
           type="url"
-          ref={avatarRef} // передача рефа в инпут
-          value={values.avatar} // добавить значение из useFormAndValidation
-          onChange={handleChange} // добавить обработчик изменений
+          onChange={handleChangeAvatar}
+          ref={avatarRef}
           placeholder="Введите ссылку URL"
           required
         />
-        <span className="nameInputAvatar-error error">{errors.avatar}</span>
+        <span className="nameInputAvatar-error error" />
       </label>
     </PopupWithForm>
   )

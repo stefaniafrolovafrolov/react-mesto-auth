@@ -1,6 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import PopupWithForm from "./PopupWithForm"
-import { useFormAndValidation } from "../hooks/useFormAndValidation.js"
 
 function AddPlacePopup({
   onClose,
@@ -9,30 +8,28 @@ function AddPlacePopup({
   isOpen,
   onCloseOverlay,
 }) {
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormAndValidation()
+  const [placeName, setPlaceName] = useState("")
+  const [placeLink, setPlaceLink] = useState("")
 
-  //сброс значений формы с помощью функции resetForm, когда изменяется значение isOpen
   useEffect(() => {
-    resetForm()
-  }, [isOpen, resetForm])
+    setPlaceName("")
+    setPlaceLink("")
+  }, [isOpen])
 
-  /* useEffect(() => {
-       setFormValues({
-         name: "",
-        link: "",
-      });
-    }, [isOpen]);*/
-
-  // проверка на валидность формы перед отправкой данных
   function handleSubmit(e) {
     e.preventDefault()
-    if (isValid) {
-      onAddPlace({
-        name: values.name,
-        link: values.link,
-      })
-    }
+    onAddPlace({
+      name: placeName,
+      link: placeLink,
+    })
+  }
+
+  function handleChangePlaceName(e) {
+    setPlaceName(e.target.value)
+  }
+
+  function handleChangePlaceLink(e) {
+    setPlaceLink(e.target.value)
   }
 
   return (
@@ -51,14 +48,14 @@ function AddPlacePopup({
           id="nameInputNew"
           name="name"
           type="text"
-          value={values.name} // валидация
-          onChange={handleChange} // валидация
+          value={placeName}
+          onChange={handleChangePlaceName}
           placeholder="Название"
           minLength="2"
           maxLength="30"
           required
         />
-        <span className="nameInputNew-error error">{errors.name}</span>
+        <span className="nameInputNew-error error" />
       </label>
       <label className="popup__label">
         <input
@@ -66,12 +63,12 @@ function AddPlacePopup({
           id="linkInputNew"
           name="link"
           type="url"
-          value={values.link} //валидация
-          onChange={handleChange} //валидация
+          value={placeLink}
+          onChange={handleChangePlaceLink}
           placeholder="Ссылка на картинку"
           required
         />
-        <span className="linkInputNew-error error">{errors.link}</span>
+        <span className="linkInputNew-error error" />
       </label>
     </PopupWithForm>
   )
