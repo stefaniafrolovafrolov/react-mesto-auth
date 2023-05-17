@@ -2,6 +2,8 @@
 
 - Cервис Mesto - сайт по типу социальных сетей, куда можно загружать фотографии, лайкать, удалять их, а также редактировать профиль.
 
+![Image alt](https://github.com/stefaniafrolovafrolov/react-mesto-auth/blob/main/Screenshot_1552.png)
+
 ## Используемые технологии:
 
 - HTML/CSS/Bem/JS/React
